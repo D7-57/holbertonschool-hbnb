@@ -1,0 +1,27 @@
+---
+config:
+  layout: dagre
+---
+flowchart TD
+ subgraph subGraph0["Presentation Layer"]
+        A["User Interface"]
+        B["API Endpoints"]
+        C["Presentation Facade"]
+  end
+ subgraph subGraph1["Business Layer"]
+        D["Models"]
+        E["Services"]
+  end
+ subgraph subGraph2["Persistence Layer"]
+        F["DBMS Connection"]
+        G["Data Replication"]
+        H["Repositories"]
+        I["Persistence Facade"]
+  end
+    J["Users"] --> A
+    A --> B & J
+    B --> C & A
+    C --> E & B
+    E --> I & D & C
+    I --> H & E
+    H --> F & G
